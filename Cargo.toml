@@ -1,0 +1,9 @@
+[package]
+name = "zed-config-sync"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+clap = { version = "4.5.9", features = ["derive"] }
+fastcmp = "1.0.1"
+homedir = "0.3.3"
