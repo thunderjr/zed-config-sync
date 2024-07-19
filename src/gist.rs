@@ -46,7 +46,10 @@ impl Gist {
     }
 
     pub fn content(self: &Gist) -> Result<Vec<u8>, io::Error> {
-        assert!(self.hash.is_some(), "edit called on a Gist with no hash");
+        assert!(
+            self.hash.is_some(),
+            "content() called on a Gist with no hash"
+        );
 
         match Command::new("gh")
             .args(&["gist", "view", &self.hash.clone().unwrap()])
@@ -80,7 +83,7 @@ impl Gist {
     }
 
     pub fn edit(self: Gist, new_file_path: String) -> io::Result<Output> {
-        assert!(self.hash.is_some(), "edit called on a Gist with no hash");
+        assert!(self.hash.is_some(), "edit() called on a Gist with no hash");
 
         Command::new("gh")
             .stdin(Stdio::piped())
